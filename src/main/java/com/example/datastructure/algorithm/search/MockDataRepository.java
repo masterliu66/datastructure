@@ -2,6 +2,7 @@ package com.example.datastructure.algorithm.search;
 
 import org.springframework.util.FileCopyUtils;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -9,6 +10,7 @@ import java.io.IOException;
 import java.io.LineNumberReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Supplier;
@@ -38,7 +40,18 @@ public class MockDataRepository {
     }
 
     public List<String> listByPartition(int partition) {
-        return Arrays.stream(findByPartition(partition)).collect(Collectors.toList());
+//        return Arrays.stream(findByPartition(partition)).collect(Collectors.toList());
+        List<String> rows = new ArrayList<>();
+        try (FileReader reader = new FileReader(FILE_PATH_PREFIX + partition + FILE_PATH_SUFFIX);
+             BufferedReader bufferedReader = new BufferedReader(reader)) {
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                rows.add(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return rows;
     }
 
     private String[] findByPartition(int partition) {
