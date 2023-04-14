@@ -6,6 +6,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.LineNumberReader;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Supplier;
@@ -24,11 +27,14 @@ public class MockDataRepository {
     public static final String INDEX_PATH_SUFFIX = ".txt";
 
     public String findById(int id) {
-        String[] rows = findByPartition(id / DataGenerator.DATA_SIZE);
-        if (rows.length <= id % DataGenerator.DATA_SIZE) {
-            return null;
-        }
-        return rows[id % DataGenerator.DATA_SIZE];
+//        String[] rows = findByPartition(id / DataGenerator.DATA_SIZE);
+//        if (rows.length <= id % DataGenerator.DATA_SIZE) {
+//            return null;
+//        }
+//        return rows[id % DataGenerator.DATA_SIZE];
+        int partition = id / DataGenerator.DATA_SIZE;
+        int row = id % DataGenerator.DATA_SIZE;
+        return findByPartitionAndRow(partition, row);
     }
 
     public List<String> listByPartition(int partition) {
@@ -44,6 +50,26 @@ public class MockDataRepository {
             return new String[0];
         }
         return rows;
+    }
+
+    private String findByPartitionAndRow(int partition, int row) {
+        if (row < 0) {
+            return null;
+        }
+
+        try (FileReader reader = new FileReader(FILE_PATH_PREFIX + partition + FILE_PATH_SUFFIX);
+             LineNumberReader lineNumberReader = new LineNumberReader(reader)) {
+            String line;
+            while ((line = lineNumberReader.readLine()) != null) {
+                if (lineNumberReader.getLineNumber() == row + 1) {
+                    return line;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
     public void writeToPartition(String result, int partition) {
