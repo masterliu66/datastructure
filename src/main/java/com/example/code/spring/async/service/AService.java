@@ -12,7 +12,7 @@ public class AService {
 
     @Async
     public void test() {
-
+        bService.test();
     }
 
 }

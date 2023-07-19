@@ -10,7 +10,7 @@ public class BService {
     AService aService;
 
     public void test() {
-
+        System.out.println("BService test");
     }
 
 }
