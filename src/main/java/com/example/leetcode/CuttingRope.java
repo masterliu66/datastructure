@@ -13,7 +13,7 @@ public class CuttingRope {
 
         int n = 10;
 
-        int ans = new CuttingRope().cuttingRope(n);
+        int ans = cuttingRope(n);
 
         assert ans == 36;
     }

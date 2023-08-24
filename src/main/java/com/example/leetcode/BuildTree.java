@@ -18,7 +18,7 @@ public class BuildTree {
     public void test() {
         int[] preorder = {3,9,20,15,7};
         int[] inorder = {9,3,15,20,7};
-        TreeNode treeNode = new BuildTree().buildTree(preorder, inorder);
+        TreeNode treeNode = buildTree(preorder, inorder);
         // Output: [3,9,20,null,null,15,7]
         System.out.println(treeNode);
         assert "[3,9,20,null,null,15,7]".equals(treeNode.toString());

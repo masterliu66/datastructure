@@ -17,12 +17,11 @@ public class IsNumber {
         String[] trueAnswers = {"+100", "5e2", "-123", "3.1416", "-1E-16", "0123"};
         String[] falseAnswers = {"12e", "1a3.14", "1.2.3", "+-5", "12e+5.4"};
 
-        IsNumber isNumber = new IsNumber();
         for (String answer : trueAnswers) {
-            assert isNumber.isNumber(answer);
+            assert isNumber(answer);
         }
         for (String answer : falseAnswers) {
-            assert !isNumber.isNumber(answer);
+            assert !isNumber(answer);
         }
     }
 

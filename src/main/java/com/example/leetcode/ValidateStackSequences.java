@@ -16,13 +16,11 @@ public class ValidateStackSequences {
         int[] pushed = {1,2,3,4,5};
         int[] popped = {4,5,3,2,1};
 
-        ValidateStackSequences stackSequences = new ValidateStackSequences();
-
-        assert stackSequences.validateStackSequences(pushed, popped);
+        assert validateStackSequences(pushed, popped);
 
         popped = new int[] {4,3,5,1,2};
 
-        assert !stackSequences.validateStackSequences(pushed, popped);
+        assert !validateStackSequences(pushed, popped);
     }
 
     public boolean validateStackSequences(int[] pushed, int[] popped) {

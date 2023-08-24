@@ -24,7 +24,7 @@ public class PathSum {
         root.right.right.left = new TreeNode(5);
         root.right.right.right = new TreeNode(1);
 
-        List<List<Integer>> ans = new PathSum().pathSum(root, 22);
+        List<List<Integer>> ans = pathSum(root, 22);
 
         assert "[[5, 4, 11, 2], [5, 8, 4, 5]]".equals(ans.toString());
     }

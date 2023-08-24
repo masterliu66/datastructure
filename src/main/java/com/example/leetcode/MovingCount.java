@@ -10,20 +10,9 @@ public class MovingCount {
     @Test
     public void test() {
 
-        int m = 2;
-        int n = 3;
-        int k = 1;
+        assert movingCount(2, 3, 1) == 3;
 
-        int ans = new MovingCount().movingCount(m, n, k);
-
-        assert ans == 3;
-
-        m = 38;
-        n = 15;
-        k = 9;
-        ans = new MovingCount().movingCount(m, n, k);
-
-        assert ans == 135;
+        assert movingCount(38, 15, 9) == 135;
     }
 
 

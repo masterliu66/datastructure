@@ -13,9 +13,7 @@ public class MyPow {
         double x = 2.00000;
         int n = -2147483648;
 
-        double ans = new MyPow().myPow(x, n);
-
-        assert ans == 0.0;
+        assert myPow(x, n) == 0.0;
     }
 
     public double myPow(double x, int n) {

@@ -1,6 +1,7 @@
 package com.example.leetcode;
 
-import java.util.ArrayList;
+import org.junit.Test;
+
 import java.util.Arrays;
 
 /**
@@ -11,23 +12,13 @@ import java.util.Arrays;
  */
 public class CheckRecord {
 
-    public static void main(String[] args) {
+    @Test
+    public void test() {
 
         int n = 5;
 
-        System.out.println(new CheckRecord(n).checkRecord());
+        System.out.println(checkRecord(n));
     }
-
-    public CheckRecord(int n) {
-        this.n = n;
-    }
-
-    public int checkRecord() {
-
-        return checkRecord(n);
-    }
-
-    int n;
 
     int MOD = 1000000007;
 

@@ -12,7 +12,7 @@ public class Fib {
 
         int n = 1000000000;
 
-        int fib = new Fib().fib(n);
+        int fib = fib(n);
 
         assert fib == 21;
     }

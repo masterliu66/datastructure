@@ -13,11 +13,9 @@ public class VerifyPostorder {
         int[] validPostOrder = {1,3,2,6,5};
         int[] invalidPostOrder = {1,6,3,2,5};
 
-        VerifyPostorder postorder = new VerifyPostorder();
+        assert verifyPostorder(validPostOrder);
 
-        assert postorder.verifyPostorder(validPostOrder);
-
-        assert !postorder.verifyPostorder(invalidPostOrder);
+        assert !verifyPostorder(invalidPostOrder);
     }
 
     int end;

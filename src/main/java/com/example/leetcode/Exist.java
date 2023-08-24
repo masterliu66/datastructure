@@ -11,11 +11,11 @@ public class Exist {
     public  void test() {
         char[][] board = {{'A','B','C','E'},{'S','F','C','S'},{'A','D','E','E'}};
         String word = "ABCCED";
-        boolean exist = new Exist().exist(board, word);
+        boolean exist = exist(board, word);
         assert exist;
         board = new char[][]{{'a', 'b'}, {'c', 'd'}};
         word = "cdba";
-        exist = new Exist().exist(board, word);
+        exist = exist(board, word);
         assert exist;
     }
 

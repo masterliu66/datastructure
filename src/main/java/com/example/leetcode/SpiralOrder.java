@@ -14,7 +14,7 @@ public class SpiralOrder {
 
         int[][] matrix = {{1},{2},{3},{4},{5},{6},{7},{8},{9},{10}};
 
-        int[] ans = new SpiralOrder().spiralOrder(matrix);
+        int[] ans = spiralOrder(matrix);
 
         System.out.println(Arrays.toString(ans));
     }
