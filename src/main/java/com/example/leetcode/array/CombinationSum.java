@@ -15,22 +15,22 @@ public class CombinationSum {
 
         assert combinationSum(new int[]{2, 3, 6, 7}, 7).toString().equals("[[7], [2, 2, 3]]");
 
-        ans.clear();
         assert combinationSum(new int[]{2, 3, 5}, 8).toString().equals("[[3, 5], [2, 3, 3], [2, 2, 2, 2]]");
 
-        ans.clear();
         assert combinationSum(new int[]{2}, 1).toString().equals("[]");
     }
 
     int[] candidates;
 
-    List<List<Integer>> ans = new ArrayList<>();
+    List<List<Integer>> ans;
 
-    List<Integer> current = new ArrayList<>();
+    List<Integer> current;
 
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
 
         this.candidates = candidates;
+        this.ans = new ArrayList<>();
+        this.current = new ArrayList<>();
 
         dfs(0, target);
 

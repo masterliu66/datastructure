@@ -18,7 +18,7 @@ public class Demo {
      */
     public static void quickSort(int[] arr, int left, int right, int k){
 
-        if (left <= right) {
+        if (left >= right) {
             return;
         }
 
@@ -33,6 +33,7 @@ public class Demo {
         } else {
             quickSort(arr, left, pos - 1, k);
         }
+
     }
 
     private static int randomizedPartition(int[] arr, int left, int right) {
@@ -44,16 +45,16 @@ public class Demo {
     private static int partition(int[] arr, int left, int right) {
 
         int pivot = arr[right];
-        int i = left - 1;
+        int i = left;
         for (int j = left; j < right; j++) {
             if (arr[j] <= pivot) {
-                swap(arr, ++i, j);
+                swap(arr, i++, j);
             }
         }
 
-        swap(arr, i + 1, right);
+        swap(arr, i, right);
 
-        return i + 1;
+        return i;
     }
 
     private static void swap(int[] arr, int i, int j) {
@@ -79,10 +80,12 @@ public class Demo {
     }
 
     public static void main(String[] args){
-        int k = 80000;
-        int[] arr = ArrayGenerator.generateArr(800 << 1, 10000);
+        int k = 8;
+        int[] arr = ArrayGenerator.generateArr(k << 1, 10000);
         quickSort(arr, 0, arr.length - 1, k);
-        assert test(arr, k);
+        if (!test(arr, k)) {
+            System.out.println("error");
+        }
         System.out.println(Arrays.toString(arr));
     }
 
