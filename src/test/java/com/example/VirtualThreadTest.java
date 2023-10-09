@@ -9,7 +9,7 @@ public class VirtualThreadTest {
 
     public static void main(String[] args) throws Exception {
 
-        var scopedValue = ScopedValue.newInstance();
+//        var scopedValue = ScopedValue.newInstance();
 
         ThreadFactory factory = Thread.ofVirtual().name("Virtual-", 1).factory();
         ExecutorService executorService = Executors.newThreadPerTaskExecutor(factory);

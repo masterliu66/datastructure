@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.elasticsearch.ElasticsearchRestClientAutoConfiguration;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.statemachine.StateMachine;
 
 /**
@@ -14,7 +17,7 @@ import org.springframework.statemachine.StateMachine;
  * @author CCC
  * @date 2021/1/18 23:39
  */
-@SpringBootApplication
+@SpringBootApplication(exclude = ElasticsearchRestClientAutoConfiguration.class)
 public class Application implements CommandLineRunner {
 
     public static void main(String[] args) {
@@ -25,10 +28,11 @@ public class Application implements CommandLineRunner {
     private StateMachine<States, Events> stateMachine;
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         stateMachine.start();
         stateMachine.sendEvent(Events.PAY);
-        stateMachine.sendEvent(Events.RECEIVE);
+        Message<Events> message = MessageBuilder.withPayload(Events.RECEIVE).setHeader("order", "order1").build();
+        stateMachine.sendEvent(message);
     }
 
 }

@@ -2,6 +2,7 @@ package com.example.code.spring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.elasticsearch.ElasticsearchRestClientAutoConfiguration;
 
 /**
  * className Application
@@ -11,7 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author CCC
  * @date 2020/12/20 22:06
  */
-@SpringBootApplication
+@SpringBootApplication(exclude = ElasticsearchRestClientAutoConfiguration.class)
 public class Application {
 
     public static void main(String[] args) {
